@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pan_tilt" description="iqr pan tilt">
+  <xacro:property name="PI" value="3.1415926535897931" />
+  <xacro:macro name="pan_tilt" params="parent *origin">
+  <xacro:property name="prefix" value="pan_tilt" />
+    <joint name="${prefix}_base_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${prefix}_base_link"/>
+    </joint>
+
+    <link name="${prefix}_base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://pan_tilt_description/urdf/mesh/base.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.2 0.2 0.2 1" />
+        </material>
+      </visual>
+    </link>
+
+    <link name="${prefix}_yaw_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://pan_tilt_description/urdf/mesh/pan.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.2 0.2 0.2 1" />
+        </material>
+      </visual>
+    </link>
+    <joint name="${prefix}_yaw_joint" type="continuous">
+      <origin xyz="0.0 0.0 0.083" rpy="0.0 0.0 0.0"/>
+      <parent link="${prefix}_base_link"/>
+      <child link="${prefix}_yaw_link"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-1.04" upper="1.04" effort="0.0" velocity="0.0"/>
+    </joint>
+
+    <link name="${prefix}_pitch_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://pan_tilt_description/urdf/mesh/tilt.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.2 0.2 0.2 1" />
+        </material>
+      </visual>
+    </link>
+    <joint name="${prefix}_pitch_joint" type="continuous">
+      <origin xyz="0.0 0.0 0.060" rpy="0.0 0.0 0.0"/>
+      <parent link="${prefix}_yaw_link"/>
+      <child link="${prefix}_pitch_link"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-1.04" upper="1.04" effort="0.0" velocity="0.0"/>
+    </joint>
+
+    <link name="${prefix}_kinect_surface"/>
+    <joint name="${prefix}_kinect_surface_joint" type="fixed">
+      <origin xyz="-0.0063 -0.010 -0.025" rpy="0 0 0" />
+      <parent link="${prefix}_pitch_link"/>
+      <child link="${prefix}_kinect_surface"/>
+    </joint>
+
+  </xacro:macro>
+  
+</robot>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <node name="iqr" pkg="pan_tilt_driver" type="PanTiltDriverNode" output="screen">
+    <param name="port_name" value="/dev/ttyACM0"/>
+    <param name="yaw_joint_name" value="iqr_pan_tilt_yaw_joint"/>
+    <param name="pitch_joint_name" value="iqr_pan_tilt_pitch_joint"/>
+  </node>
+
+  <include file="$(find pan_tilt_description)/launch/state_publisher.launch" />  
+
+  <arg name="rvizconfig" default="$(find pan_tilt_description)/rviz/view_modle.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch> 

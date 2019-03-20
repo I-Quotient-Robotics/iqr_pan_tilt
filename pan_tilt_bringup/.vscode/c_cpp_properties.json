@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/iqr/Desktop/iqr_pan_tilt/devel/include",
+                "/home/iqr/catkin_ws/devel/include",
+                "/home/iqr/work_ros/arbotix_ros/devel/include",
+                "/home/iqr/work_ros/zed_ros/devel/include",
+                "/opt/ros/kinetic/include",
+                "/home/iqr/Desktop/iqr_pan_tilt/src/pan_tilt_bringup/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
