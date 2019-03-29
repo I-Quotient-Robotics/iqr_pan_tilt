@@ -23,7 +23,7 @@
 *********************************************************************************/
 #include "PanTiltDriver.h"
 
-#define SLEEP_TIME_MS 100
+#define SLEEP_TIME_MS 80
 
 static inline void delay()
 {
@@ -121,7 +121,7 @@ void IQR::PanTiltDriver::getPose(float &yaw, float &pitch)
 
 void IQR::PanTiltDriver::setPose(const float &yaw, const float &pitch)
 {
-  setPose(yaw, pitch, 5);
+  setPose(yaw, pitch, 10);
 }
 
 void IQR::PanTiltDriver::setPose(const float &yaw, const float &pitch, const uint16_t &speed)
@@ -131,14 +131,12 @@ void IQR::PanTiltDriver::setPose(const float &yaw, const float &pitch, const uin
     if (abs(yaw) > 60 || abs(pitch) > 60 || speed > 30)
       return;
 
-    int32_t goalYaw = int32_t(yaw);
-    int32_t goalPitch = int32_t(pitch);
     byte msg[12] = {
         0,
     };
     msg[0] = 0x01;
-    QSerialFrame::int32ToByte(goalYaw, msg + 2);
-    QSerialFrame::int32ToByte(goalPitch, msg + 6);
+    QSerialFrame::float32ToByte(yaw, msg + 2);
+    QSerialFrame::float32ToByte(pitch, msg + 6);
     QSerialFrame::int16ToByte(speed, msg + 10);
     std::lock_guard<std::mutex> lck(_mtx);
     _frame->BuildFrame(msg, 12);
@@ -189,11 +187,11 @@ void IQR::PanTiltDriver::run()
         case 0x01:
           break;
         case 0x05:
-          int32_t nowYaw, nowPitch;
-          nowYaw = QSerialFrame::bytesToInt32(_frame->RcvData + 2);
-          nowPitch = QSerialFrame::bytesToInt32(_frame->RcvData + 6);
-          _yaw = float(nowYaw);
-          _pitch = float(nowPitch);
+          float nowYaw, nowPitch;
+          nowYaw = QSerialFrame::byteToFloat32(_frame->RcvData + 2);
+          nowPitch = QSerialFrame::byteToFloat32(_frame->RcvData + 6);
+          _yaw = nowYaw;
+          _pitch = nowPitch;
           break;
         case 0x06:
           _version << "v" << int(_frame->RcvData[2]) << "." << int(_frame->RcvData[3]);
@@ -205,15 +203,6 @@ void IQR::PanTiltDriver::run()
     }
     _mtx.unlock();
     delay();
-
-    // _mtx.lock();
-    // byte msg[4] = {
-    //     0,
-    // };
-    // msg[0] = 0x05;
-    // _frame->BuildFrame(msg, 4);
-    // _com->write(_frame->SenData, _frame->SenData_Len);
-    // _mtx.unlock();
   }
 }
 

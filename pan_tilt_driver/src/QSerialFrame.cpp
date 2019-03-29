@@ -22,6 +22,7 @@
 ** SOFTWARE.
 *******************************************************************************/
 #include "QSerialFrame.h"
+#include <string.h>
 
 
 QSerialFrame::QSerialFrame(const byte id)
@@ -223,25 +224,20 @@ void QSerialFrame::int16ToByte(int16_t i, byte * bytes)
 
 float QSerialFrame::byteToFloat32(byte *bytes)
 {
-  uint32_t accum = 0;
-  accum |= ((bytes[3] & 0xff) << 0);
-  accum |= ((bytes[2] & 0xff) << 8);
-  accum |= ((bytes[1] & 0xff) << 16);
-  accum |= ((bytes[0] & 0xff) << 24);
-  union
-  {
-    uint32_t i;
-    float f;
-  } u;
-  u.i = accum;
-  return u.f;
+  union {
+    float a;
+    byte bytes[4];
+  } thing;
+  memcpy(thing.bytes, bytes, 4);
+  return thing.a;
 }
 
 void QSerialFrame::float32ToByte(float f, byte *bytes)
 {
-  byte *pdata = (byte *)&f;
-  for (uint32_t i = 3; i >= 0; i--)
-  {
-    bytes[i] = *pdata++;
-  }
+  union {
+    float a;
+    unsigned char bytes[4];
+  } thing;
+  thing.a = f;
+  memcpy(bytes, thing.bytes, 4);
 }
