@@ -41,13 +41,13 @@ target_link_libraries(PanTiltDriverNode
   ${catkin_LIBRARIES}
 )
 
-# add_executable(test2
-#   src/test.cpp
-#   src/PanTiltDriver.cpp
-#   src/QThread.cpp
-#   src/QSerialPort.cpp
-#   src/QSerialFrame.cpp
-# )  
-# target_link_libraries(test2
-#   ${catkin_LIBRARIES}
-# )
+add_executable(test2
+  src/test.cpp
+  src/PanTiltDriver.cpp
+  src/QThread.cpp
+  src/QSerialPort.cpp
+  src/QSerialFrame.cpp
+)  
+target_link_libraries(test2
+  ${catkin_LIBRARIES}
+)
