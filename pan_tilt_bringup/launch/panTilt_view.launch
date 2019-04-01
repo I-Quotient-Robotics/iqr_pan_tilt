@@ -3,8 +3,8 @@
 
   <node name="iqr" pkg="pan_tilt_driver" type="PanTiltDriverNode" output="screen">
     <param name="port_name" value="/dev/ttyACM0"/>
-    <param name="yaw_joint_name" value="iqr_pan_tilt_yaw_joint"/>
-    <param name="pitch_joint_name" value="iqr_pan_tilt_pitch_joint"/>
+    <param name="yaw_joint_name" value="pan_tilt_yaw_joint"/>
+    <param name="pitch_joint_name" value="pan_tilt_pitch_joint"/>
   </node>
 
   <include file="$(find pan_tilt_description)/launch/state_publisher.launch" />  
