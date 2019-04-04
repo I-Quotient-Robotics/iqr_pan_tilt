@@ -88,25 +88,6 @@ void PanTiltDriverNode::JointStatePublish()
   float pitchDeg = 0.0;
   _pt->getPose(yawDeg, pitchDeg);
 
-  static float lastPitch = 0.0;
-  static float lastYaw = 0.0;
-  if(abs(pitchDeg - lastPitch) > 2)
-  {
-    lastPitch = pitchDeg;
-  }
-  else
-  {
-    pitchDeg = lastPitch;
-  }
-  if(abs(yawDeg - lastYaw) > 2)
-  {
-    lastYaw = yawDeg;
-  }
-  else
-  {
-    yawDeg = lastYaw;
-  }
-
   double yawRad = 0.01745329 * yawDeg;
   double pitchRad = 0.01745329 * pitchDeg;
 
