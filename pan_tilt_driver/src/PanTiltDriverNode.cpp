@@ -99,7 +99,7 @@ void PanTiltDriverNode::JointStatePublish()
 
 void PanTiltDriverNode::callBack(const pan_tilt_driver::PanTiltCmd &msg)
 {
-  ROS_INFO("[%f,%f,%f]", msg.yaw, msg.pitch, msg.speed);
+  ROS_INFO("[%f,%f,%i]", msg.yaw, msg.pitch, msg.speed);
   _pt->setPose(msg.yaw, msg.pitch, msg.speed);
 }
 
