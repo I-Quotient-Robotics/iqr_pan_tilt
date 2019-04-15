@@ -6,7 +6,7 @@
     <param name="pitch_joint_name" value="pan_tilt_pitch_joint"/>
   </node>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find pan_tilt_description)/urdf/pan_tilt.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find pan_tilt_description)/urdf/pan_tilt_st.urdf.xacro" />
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> 
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
