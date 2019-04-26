@@ -32,6 +32,7 @@ add_executable(PanTiltDriverNode
 target_link_libraries(PanTiltDriverNode
   ${catkin_LIBRARIES}
 )
+add_dependencies(PanTiltDriverNode pan_tilt_msg_generate_messages_cpp)
 
 add_executable(test2
   src/test.cpp
