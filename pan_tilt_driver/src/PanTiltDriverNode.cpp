@@ -26,7 +26,7 @@
 #include <ros/time.h>
 #include <tf/transform_broadcaster.h>
 #include <sensor_msgs/JointState.h>
-#include "pan_tilt_driver/PanTiltCmd.h"
+#include "pan_tilt_msg/PanTiltCmd.h"
 #include "PanTiltDriver.h"
 
 using namespace std;
@@ -39,7 +39,7 @@ public:
   void JointStatePublish();
 
 protected:
-  void callBack(const pan_tilt_driver::PanTiltCmd &msg);
+  void callBack(const pan_tilt_msg::PanTiltCmd &msg);
 
 private:
   IQR::PanTiltDriver *_pt;
@@ -97,7 +97,7 @@ void PanTiltDriverNode::JointStatePublish()
   _jointPub.publish(_js);
 }
 
-void PanTiltDriverNode::callBack(const pan_tilt_driver::PanTiltCmd &msg)
+void PanTiltDriverNode::callBack(const pan_tilt_msg::PanTiltCmd &msg)
 {
   ROS_INFO("[%f,%f,%i]", msg.yaw, msg.pitch, msg.speed);
   _pt->setPose(msg.yaw, msg.pitch, msg.speed);
