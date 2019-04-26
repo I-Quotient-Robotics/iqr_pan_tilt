@@ -7,16 +7,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  message_runtime
-  message_generation
+  pan_tilt_msg
 )
-
-add_message_files(
-  FILES
-  PanTiltCmd.msg
-)
-
-generate_messages(DEPENDENCIES std_msgs)
 
 catkin_package(
 #  INCLUDE_DIRS include

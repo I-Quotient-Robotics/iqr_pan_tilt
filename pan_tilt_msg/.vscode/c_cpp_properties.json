@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/iqr/Desktop/iqr_pan_tilt/devel/include",
+        "/opt/ros/kinetic/include",
+        "/home/iqr/Desktop/iqr_pan_tilt/src/iqr_pan_tilt/pan_tilt_driver/include",
+        "/usr/include"
+      ],
+      "name": "Linux"
+    }
+  ]
+}
