@@ -21,7 +21,7 @@ cd ~/ros_ws/src
 ```shell
 git clone https://github.com/I-Quotient-Robotics/iqr_pan_tilt.git
 cd ..
-catkin_make
+catkin_make -j8
 ```
 环境设置
 ```shell
