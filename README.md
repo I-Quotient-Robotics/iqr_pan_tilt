@@ -36,5 +36,5 @@ roslaunch pan_tilt_bringup panTilt_view.launch
 ```
 发送位置消息
 ```shell
-rostopic pub /iqr/pan_tilt_cmd pan_tilt_driver/PanTiltCmd "yaw: 30.0 pitch: 30.0 speed: 20"
+rostopic pub /iqr/pan_tilt_cmd pan_tilt_msg/PanTiltCmd "yaw: 30.0 pitch: 30.0 speed: 20"
 ```
