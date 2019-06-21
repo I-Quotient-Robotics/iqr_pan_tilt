@@ -38,3 +38,15 @@ roslaunch pan_tilt_bringup panTilt_view.launch
 ```shell
 rostopic pub /iqr/pan_tilt_cmd pan_tilt_msg/PanTiltCmd "yaw: 30.0 pitch: 30.0 speed: 20"
 ```
+
+## 注意事项
+启动驱动节点端口错误解决方法
+```shell
+//进入launch文件修改为云台对应的端口
+<param name = "port name" value = "/dev/ttyUSB0"/>
+```
+在命令行中查询使用的端口
+```shell
+ls -l /dev |grep ttyUSB
+ls -l /dev |grep ttyACM
+```
