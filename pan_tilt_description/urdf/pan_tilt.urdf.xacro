@@ -34,7 +34,7 @@
       </visual>
     </link>
     <joint name="${prefix}_yaw_joint" type="continuous">
-      <origin xyz="0.0 0.0 0.083" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.0 0.05455" rpy="0.0 0.0 0.0"/>
       <parent link="${prefix}_base_link"/>
       <child link="${prefix}_yaw_link"/>
       <axis xyz="0 0 1"/>
@@ -53,7 +53,7 @@
       </visual>
     </link>
     <joint name="${prefix}_pitch_joint" type="continuous">
-      <origin xyz="0.0 0.0 0.060" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.0 0.057" rpy="0.0 0.0 0.0"/>
       <parent link="${prefix}_yaw_link"/>
       <child link="${prefix}_pitch_link"/>
       <axis xyz="0 1 0"/>
@@ -62,7 +62,7 @@
 
     <link name="${prefix}_kinect_surface"/>
     <joint name="${prefix}_kinect_surface_joint" type="fixed">
-      <origin xyz="-0.0063 -0.010 -0.025" rpy="0 0 0" />
+      <origin xyz="0.0010 0.0077 -0.022" rpy="0 0 0" />
       <parent link="${prefix}_pitch_link"/>
       <child link="${prefix}_kinect_surface"/>
     </joint>
