@@ -23,7 +23,7 @@
 *********************************************************************************/
 #include "PanTiltDriver.h"
 
-#define SLEEP_TIME_MS 80
+#define SLEEP_TIME_MS 10
 
 static inline void delay()
 {
