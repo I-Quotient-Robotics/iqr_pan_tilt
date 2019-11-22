@@ -1,12 +1,19 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>pan_tilt_driver</name>
-  <version>0.0.0</version>
+  <version>1.1.0</version>
   <description>The pan_tilt_driver package</description>
 
-  <maintainer email="iqr@todo.todo">iqr</maintainer>
+  <maintainer email="lei.yan@iquotient-robotics.com">Lei Yan</maintainer>
 
   <license>MIT</license>
+
+  <url type="website">https://github.com/I-Quotient-Robotics/iqr_pan_tilt</url>
+  <url type="repository">https://github.com/I-Quotient-Robotics/iqr_pan_tilt.git</url>
+  <url type="bugtracker">https://github.com/I-Quotient-Robotics/iqr_pan_tilt/issues</url>
+
+  <author email="lei.yan@iquotient-robotics.com">Lei Yan</author>
+  <author email="ye.tian@iquotient-robotics.com">Ye Tian</author>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
@@ -20,7 +27,7 @@
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-  <exec_depend>pan_tilt_msg</exec_depend>
+  <exec_depend>pan_tilt_msgs</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

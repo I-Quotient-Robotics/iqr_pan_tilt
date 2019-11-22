@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinect_v2" description="kinect v2">
+
+  <xacro:macro name="kinect_v2" params="parent *origin">
+    <xacro:property name="prefix" value="kinect_v2" />
+    <joint name="${prefix}_base_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${prefix}_base"/>
+    </joint>
+    <link name="${prefix}_base">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://pan_tilt_description/mesh/kinect_v2.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.2 0.2 0.2 1" />
+        </material>
+      </visual>
+    </link>
+
+    <link name="kinect2_link"/>
+    <joint name="${prefix}_joint" type="fixed">
+      <origin xyz="0.01 -0.097 0.045" rpy="${-pi/2} 0 ${-pi/2}" />
+      <parent link="${prefix}_base"/>
+      <child link="kinect2_link"/>
+    </joint>
+  </xacro:macro>
+</robot>

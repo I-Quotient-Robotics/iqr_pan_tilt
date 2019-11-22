@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="log_type" default="screen"/>
+  <arg name="port_name" default="/dev/pan_tilt"/>
+
+  <node name="pan_tilt_driver_node" pkg="pan_tilt_driver" type="pan_tilt_driver_node" output="$(arg log_type)">
+    <param name="port_name" value="$(arg port_name)"/>
+    <param name="yaw_joint_name" value="pan_tilt_yaw_joint"/>
+    <param name="pitch_joint_name" value="pan_tilt_pitch_joint"/>
+  </node>
+</launch> 
