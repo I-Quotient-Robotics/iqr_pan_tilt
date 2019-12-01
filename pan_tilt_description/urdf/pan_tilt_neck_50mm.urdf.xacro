@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pan_tilt_neck_50mm" description="50mm pan tilt neck">
+  <xacro:macro name="pan_tilt_neck_50mm" params="parent *origin">
+    <link name="pan_tilt_neck_bottom">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://pan_tilt_description/mesh/neck_50mm.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.20 0.20 0.20 1" />
+        </material>
+      </visual>
+    </link>
+    <joint name="pan_tilt_neck_bottom_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="pan_tilt_neck_bottom"/>
+    </joint>
+
+    <link name="pan_tilt_neck_top"/>
+    <joint name="pan_tilt_nect_top_joint" type="fixed">
+      <origin xyz="0 0 0.05" rpy="0 0 0" />
+      <parent link="pan_tilt_neck_bottom"/>
+      <child link="pan_tilt_neck_top"/>
+    </joint>
+  </xacro:macro>
+</robot>
