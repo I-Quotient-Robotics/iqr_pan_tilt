@@ -56,7 +56,7 @@ PanTiltDriverNode::PanTiltDriverNode()
     : _nh("~")
 {
   //init params
-  _nh.param<std::string>("port_name", _portName, "/dev/ttyACM0");
+  _nh.param<std::string>("port_name", _portName, "/dev/ttyUSB0");
   _nh.param<std::string>("yaw_joint_name", _yawJointName, "iqr_pan_tilt_yaw_joint");
   _nh.param<std::string>("pitch_joint_name", _pitchJointName, "iqr_pan_tilt_pitch_joint");
 
@@ -72,7 +72,7 @@ PanTiltDriverNode::PanTiltDriverNode()
   //set publisher
   _cmdSub = _nh.subscribe("pan_tilt_cmd", 50, &PanTiltDriverNode::callBack, this);
 
-  cout << "griapper port name:" << _portName << endl;
+  cout << "pan-tilt port name:" << _portName << endl;
   _pt = new IQR::PanTiltDriver(_portName);
   sleep(2);
 }
